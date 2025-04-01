@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Übung M03</title>
+    </head>
+    <body>
+        <h1>Übung Modul 3</h1>
+        <script>
+            // Funktion bruttoRechner mit Parameter preis_netto
+            function bruttoRechner(preis_netto) {
+
+                // Variable steuer mit Wert 0.19
+                let steuer = 1.19
+                
+                // Berechne den Bruttowert
+                let preis_brutto = preis_netto *  steuer
+                
+                // Gebe den Bruttowert aus
+                document.write(preis_brutto+" Euro")
+            }
+
+            // Funktionsaufruf mit Parameter 100
+            bruttoRechner(100)
+        </script>
+    </body>
+</html>

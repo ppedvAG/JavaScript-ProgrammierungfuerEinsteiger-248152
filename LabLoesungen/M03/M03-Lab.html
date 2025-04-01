@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab M03</title>
+    </head>
+    <body>
+        <h1>Lab Modul 3</h1>
+        <script>
+            //Funktion getBiuggerNumber mit zwei Parametern a und b
+            // Gibt die größere Zahl zurück, wenn a und b unterschiedlich sind
+            function getBiuggerNumber(a, b) {
+                if (a > b) {
+                    return a;
+                } else  if (b > a) {
+                    return b;
+                } else {
+                    // Wenn a und b gleich sind, gebe NaN zurück
+                    // NaN steht für "Not a Number" und wird meistens verwendet, um anzuzeigen, dass eine Berechnung nicht möglich ist
+                    return NaN;
+                }
+            }
+            // Beispielaufruf der Funktion getBiuggerNumber mit den Werten 5 und 10
+            let result = getBiuggerNumber(5, 10);
+            Console.log(result)
+            // Beispielaufruf der Funktion getBiuggerNumber mit den Werten 10 und 10
+            let result1 = getBiuggerNumber(10, 10);
+            Console.log(result1)
+
+
+            // Funktion getBiggerNumber mit Turnary Operator
+            // Gibt die größere Zahl zurück, wenn a und b unterschiedlich sind ansonsten NaN
+            function getBiggerNumberTurnary(a, b) {
+                return (a > b) ? a : (b > a) ? b : NaN;
+            }
+
+            // Beispielaufruf der Funktion getBiggerNumber mit den Werten 5 und 10
+            let result2 = getBiggerNumberTurnary(5, 10);
+            console.log(result2)
+            // Beispielaufruf der Funktion getBiggerNumber mit den Werten 10 und 10
+            let result3 = getBiggerNumberTurnary(10, 10);
+            console.log(result3)
+            
+        </script>
+    </body>
+</html>

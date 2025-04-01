@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Übung M05</title>
+    </head>
+    <body>
+        <h1>Übung Modul 5</h1>
+        <script>
+            document.write("<h2>Übung 1</h2>")
+            // 6 Zufallszahlen von 0 bis 49 in einem Array speichern
+            let numbers = []
+            for (let i = 0; i < 6; i++) {
+                numbers.push(Math.floor(Math.random() * 50))
+            }
+
+            // Ausgabe der Zahlen im Browser
+            document.write(numbers)
+
+        </script>
+
+
+        <h2>Übung 2</h2>
+        <!-- Button und Inputfeld für Usereingaben -->
+        <input type="number" id="userInput" placeholder="Gib eine Zahl zwischen 0 und 49 ein" />
+        <button id="checkButton">Überprüfen</button>
+        <p id="result"></p>
+        <script>
+            // Die 6 Zufallszahlen von Übung 1 können wir hier weiterverwenden
+
+
+            
+            // Der Code in "funciton(){}" wird ausgefürht wenn der Button mit der ID "checkButton" geklickt wird
+            document.getElementById("checkButton").addEventListener("click", function() {
+
+                // Die Eingabe des Users wird vom Element mit der ID "userInput" geholt und in eine Integer umgewandelt
+                const userNumber = parseInt(document.getElementById("userInput").value)
+
+                // Das Element mit der ID "result" wird in die Variable "resultElement" gespeichert
+                const resultElement = document.getElementById("result")
+                
+                // Wenn die Zahl des Users in dem Array "numbers" enthalten ist, wird eine Erfolgsmeldung ausgegeben
+                if (numbers.includes(userNumber)) {
+
+                    resultElement.textContent = "Treffer! Die Zahl " + userNumber + " ist dabei.";
+
+                } else {
+
+                    // Wenn die Zahl des Users nicht in dem Array "numbers" enthalten ist, wird eine Fehlermeldung ausgegeben
+                    resultElement.textContent = "Leider kein Treffer. Die Zahl " + userNumber + " ist nicht dabei.";
+
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab M02</title>
+    </head>
+    <body>
+        <h1>Lab Modul 2</h1>
+        <script>
+            // 2 Variablen vom Typ Integer
+            let Zahl_1 = 230;
+            let Zahl_2 = 489;
+            
+            // Vergleich der beiden Zahlen
+            if (Zahl_1 > Zahl_2) {
+                // String verketten mit "+"-Operator
+                document.writeln(Zahl_1+" ist größer als " +Zahl_2)
+            } else if (Zahl_2 > Zahl_1) {
+                document.writeln(Zahl_1+" ist kleiner als " +Zahl_2)
+            } else {
+                document.writeln("Die Zahlen sind gleichgestellt");
+            }
+
+            // Zeile Abstand ausgeben
+            document.writeln("<br>")
+
+            // Variable vom Typ "String"
+            let Stadt = "Wien"
+
+            // Switch-Case-Fall
+            switch(Stadt) {
+                case "Berlin":
+                    document.writeln("Die Stadt ist " + Stadt)
+                    break;
+                case "Wien":
+                    document.writeln("Die Stadt ist " + Stadt)
+                    break;
+                case "Paris":
+                    document.writeln("Die Stadt ist " + Stadt)
+                    break;
+                default:
+                    document.writeln("Die Stadt ist uns unbekannt...")
+                    break;
+            }
+        </script>
+    </body>
+</html>
