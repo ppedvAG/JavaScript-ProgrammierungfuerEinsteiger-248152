@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Modul 8</title>
+    </head>
+    <body>
+        <h1>Modul 8</h1>
+           
+
+        <button id="getDateBtn">Aktuelles Datum laden</button>
+        <p id="datumAnzeige"></p>
+        
+
+    
+        <script>
+            // Funktion um das aktuelle Datum zu laden
+            function getDate() {
+                document.getElementById("datumAnzeige").innerHTML = Date();
+            }        
+
+            // Event-Listener für den Button
+            getDatBtn = document.getElementById("getDateBtn");
+            getDateBtn.addEventListener("click", function() {
+                alert("Aktuelles Datum: " + Date());
+                getDate();
+            });
+        </script>
+
+    </body>
+
+</html>

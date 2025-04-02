@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>To-Do-Liste</title>
+    </head>
+    <body>
+        <h1>Meine To-Do-Liste</h1>
+        
+        <!-- Eingabefeld für neues TODO -->
+        <input type="text" id="eingabeFeld" placeholder="Neues To-Do hinzufügen">
+
+        <!-- Button zum Hinzufügen des TODOs -->
+        <button id="hinzufuegenButton">Hinzufügen</button>
+        <button id="loeschenButton">Alle Elemente löschen</button>
+        <button id="erstesLoeschenButton">Erstes Element löschen</button>
+        <button id="ausgewaehlteLoeschenButton">Ausgewählte Elemente löschen</button>
+
+        <!-- Ungeordnete Liste, in der die TODOs von JS aufgelistet werden -->
+        <ul id="toDoListe">
+
+            <!-- Hier werden die TODOs dynamisch hinzugefügt -->
+            <!-- Bitte wenn nötig den Pfad von todo.js anpassen -->
+            <script src="todo.js"></script>  
+        </ul>
+        
+
+        
+    </body>
+</html>
