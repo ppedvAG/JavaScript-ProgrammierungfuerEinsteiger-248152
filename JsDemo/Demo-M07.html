@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Modul 7</title>
+    </head>
+    <body>
+        <h1>Modul 7</h1>
+        <!-- Script wird gestartet  -->
+        <p>Hier steht Text</p>
+        <p></p>
+
+        <p class="Beispiel">Text...</p>
+        <p class="Beispiel">Text...</p>
+
+        <a id="ppedvLink">Link zu ppedv</a>
+
+        <div id="container">
+        
+        </div>
+        <script>
+            // Zugriff auf die DOM-Elemente "p" über die Tag-Namen
+            // getElementsByTagName gibt eine HTMLCollection (array) zurück, die alle Elemente mit dem angegebenen Tag-Namen enthält
+            let elementeParagraph = document.getElementsByTagName("p");
+            elementeParagraph[1].innerHTML = "Oben steht der Text: "+ elementeParagraph[0].innerHTML;
+
+            // Zugriff auf die unteren DOM-ELemente über die Klasse "Beispiel"
+            // getElementsByClassName gibt eine HTMLCollection (array) zurück, die alle Elemente mit der angegebenen Klasse enthält
+            let elementeBeispiel = document.getElementsByClassName("Beispiel");
+            elementeBeispiel[1].innerHTML = "Oben steht der Text: "+ elementeBeispiel[0].innerHTML;
+
+            // Atribut "href" eines Links ändern
+            elementLink = document.getElementById("ppedvLink");
+            // setAttribute() ändert den Wert des angegebenen Attributs
+            elementLink.setAttribute("href", "https://ppedv.de/");
+            // getAttribute() gibt den Wert des angegebenen Attributs zurück
+            elementeBeispiel[1].innerHTML = "Link zu ppedv: "+ elementLink.getAttribute("href");
+
+            // auf Syles eines Elements zugreifen
+            // Setzen des Attributs "style" auf "color: red;"
+            elementeBeispiel[0].style.color = "red";
+
+            // Hinzufügen und Löschen von HTML Elementen
+            // Erstellen eines neuen <p>-Elements
+            let neuesElement = document.createElement("p");
+            // Textinhalt des neuen Elements setzen
+            neuesElement.innerHTML = "Neues Element von JavaScript erstellt";
+            // Hinzufügen des neuen Elements in den div Container
+            document.getElementById("container").appendChild(neuesElement);
+            
+            // Zweites Element erstellen um es wieder zu löschen
+            let neuesElement2 = document.createElement("p");
+            // Textinhalt des neuen Elements setzen
+            neuesElement2.innerHTML = "Neues Element von JavaScript erstellt";
+            // Hinzufügen des neuen Elements in den div Container
+            document.getElementById("container").appendChild(neuesElement2);
+
+            // Löschen des zweiten Elements
+            // removeChild() entfernt ein Kind-Element aus dem DOM
+            document.getElementById("container").removeChild(neuesElement2);
+            
+
+            // Ersetzen eines Elements mit replaceChild()
+            // neuesElement1 wird durch einen Link ersetzt
+            let neuerLink = document.createElement("a");
+            neuerLink.innerHTML = "Link zu ppedv";
+            neuerLink.setAttribute("href", "https://ppedv.de/"); 
+            // Ersetzen des ersten Elements durch den neuen Link
+            document.getElementById("container").replaceChild(neuerLink, neuesElement);           
+        </script>
+
+    </body>
+
+</html>

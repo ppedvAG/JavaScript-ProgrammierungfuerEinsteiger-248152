@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Test REST Service</title>
+  </head>
+
+  <body>
+    <h1>Test REST Service</h1>
+    
+    <!--
+      Button, der beim Anklicken eine GET-Anfrage an den REST-Service auslöst,
+      um alle vorhandenen Items abzurufen.
+    -->
+    <button id="loadItems">Load Items</button>
+    
+    <!--
+      Ungeordnete Liste, die später dynamisch mit den aus dem REST-Service geladenen Items befüllt wird.
+    -->
+    <ul id="itemsList">
+      <!-- Hier werden die Items dynamisch hinzugefügt -->
+    </ul>
+        
+
+    <h2>Add New Item</h2>
+    
+    <!--
+      Formular, um ein neues Item hinzuzufügen. 
+      Es enthält ein Textfeld zur Eingabe des Namens und einen Submit-Button.
+    -->
+    <form id="addItemForm">
+      <label for="itemName">Item Name:</label>
+      <!--
+        Eingabefeld mit der ID "itemName", das zwingend einen Wert erfordert (required).
+      -->
+      <input type="text" id="itemName" name="itemName" required>
+      <!--
+        Button, der das Formular absendet, um eine POST-Anfrage an den REST-Service zu senden.
+      -->
+      <button type="submit">Add Item</button>
+    </form>
+    
+    <!--
+      Ein <pre>-Element, welches zur Anzeige von Response-Nachrichten (z.B. Fehlern oder Bestätigungen)
+      im Formatierter Text verwendet wird.
+    -->
+    <pre id="responseMessage"></pre>
+
+    <!-- JavaScript-Bereich -->
+    <script>
+      // Zugriff auf die DOM-Elemente, die im Skript verwendet werden
+      const loadItemsBtn = document.getElementById('loadItems');   // Button zum Laden der Items
+      const itemsList = document.getElementById('itemsList');        // Liste, in der die Items dargestellt werden
+      const addItemForm = document.getElementById('addItemForm');    // Formular zum Hinzufügen eines neuen Items
+      const responseMessage = document.getElementById('responseMessage'); // Bereich zur Anzeige von Rückmeldungen
+
+      // Basis-URL des REST-Services
+      const BASE_URL = 'http://localhost:3000/items';
+
+      // Event-Listener für den "Load Items" Button
+      loadItemsBtn.addEventListener('click', () => {
+        fetch(BASE_URL)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            itemsList.innerHTML = '';
+            data.forEach(item => {
+              const li = document.createElement('li');
+              li.textContent = `ID: ${item.id} Name: ${item.name}`;
+              itemsList.appendChild(li);
+            });
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            responseMessage.textContent = `Error fetching items: ${error.message}`;
+          });
+      });
+
+      // Event-Listener für das Formular
+      addItemForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const itemName = document.getElementById('itemName').value;
+
+        fetch(BASE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: itemName })
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            responseMessage.textContent = JSON.stringify(data, null, 2);
+            loadItemsBtn.click();
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            responseMessage.textContent = `Error adding item: ${error.message}`;
+          });
+      });
+    </script>
+  </body>
+</html>
