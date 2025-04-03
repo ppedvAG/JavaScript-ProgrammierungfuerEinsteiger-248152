@@ -82,25 +82,35 @@
 
       // Event-Listener für das Formular
       addItemForm.addEventListener('submit', (event) => {
+        
+        // Verhindert das Standardverhalten des Formulars (Seiten-Neuladen)
         event.preventDefault();
+
+        // Holt den Wert des Eingabefeldes mit der ID 'itemName'
         const itemName = document.getElementById('itemName').value;
 
+        // Sendet eine POST-Anfrage an die API (BASE_URL)
         fetch(BASE_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: itemName })
+          method: 'POST', // HTTP-Methode: POST
+          headers: { 'Content-Type': 'application/json' }, // Setzt den Content-Type auf JSON
+          body: JSON.stringify({ name: itemName }) // Konvertiert die Daten in einen JSON-String
         })
           .then(response => {
+            // Überprüft, ob die Antwort erfolgreich ist (Statuscode 200-299)
             if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
+              throw new Error(`HTTP error! status: ${response.status}`); // Fehler werfen, wenn nicht erfolgreich
+            } 
+            return response.json(); // Konvertiert die Antwort in ein JSON-Objekt
           })
           .then(data => {
+            // Zeigt die Antwortdaten im 'responseMessage'-Element an
             responseMessage.textContent = JSON.stringify(data, null, 2);
+
+            // Simuliert einen Klick auf den Button 'loadItemsBtn', um die Liste neu zu laden
             loadItemsBtn.click();
           })
           .catch(error => {
+            // Behandelt Fehler und zeigt eine Fehlermeldung an
             console.error('Error:', error);
             responseMessage.textContent = `Error adding item: ${error.message}`;
           });
