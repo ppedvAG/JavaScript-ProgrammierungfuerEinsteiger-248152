@@ -5,26 +5,10 @@
     </head>
     <body>
         <script>
-            function setCookie(start_time, end_session_time, total_time, flag, count) {
-            document.cookie = "start_time=" + start_time;
-            if (end_session_time) {
-                document.cookie = "end_session_time=" + end_session_time;
-            }
-            if (total_time) {
-                document.cookie = "total_time=" + total_time;
-            }
-            if (flag) {
-                document.cookie = "flag=" + flag;
-            }
-            if (count) {
-                document.cookie = "count=" + count;
-            }
-
-            console.log("document.cookie = " + document.cookie);
-        }
-            
+                      
             document.cookie="username= Dominik; expires = Thu, 3 APR 2025 13:00:00 UTC; path=/";
             console.log(document.cookie)
+            
             document.cookie="cookie2= Franz; expires = Thu, 3 APR 2025 13:00:00 UTC; path=/user"
             console.log(document.cookie)
             document.cookie="cookie3= Franz; expires = Thu, 3 APR 2025 13:00:00 UTC; path=/user"

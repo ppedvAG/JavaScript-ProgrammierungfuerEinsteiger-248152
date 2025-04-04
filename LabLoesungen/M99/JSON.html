@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Konverter</title>
+</head>
+<body>
+    <h1>JSON Konverter</h1>
+    <!-- Eingabefeld für einen JSON String -->
+    <textarea id="jsonInput" placeholder="Geben Sie einen JSON-String ein..."></textarea>
+    <button id="convertButton">Konvertieren</button> <!-- Button zum Konvertieren -->
+    <pre id="output"></pre> <!-- Paragraph für den Output-->
+
+    <script>
+        // Event Listener für einen Klick auf den Button
+        document.getElementById('convertButton').addEventListener('click', function() {
+            // Eingabe in einen String speichern
+            const jsonInput = document.getElementById('jsonInput').value;
+            try {
+                // EingabeString in ein Objekt konvertieren
+                const jsonObject = JSON.parse(jsonInput);
+                // Eingabe wieder rückkonvertieren und in den Output Paragraphen ausgeben
+                document.getElementById('output').textContent = JSON.stringify(jsonObject, null, 2);
+            } catch (e) {
+                // Ein Error würde in den Output Paragraphen ausgegeben werden
+                document.getElementById('output').textContent = 'Ungültiger JSON-String';
+            }
+        });
+    </script>
+</body>
+</html>

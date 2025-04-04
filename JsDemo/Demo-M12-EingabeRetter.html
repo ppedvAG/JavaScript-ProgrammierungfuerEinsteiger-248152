@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <!-- Formular zum Testen von Sessionstorage -->
+        <form id="form1" action="Demo-M12-EingabeRetter.html" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <button id="submit">Speichern</button>
+            <button id="load">Laden</button>
+        </form>
+        <script>
+            // Funktion zum Speichern der Eingabewerte im Sessionstorage
+            function saveInput() {
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                sessionStorage.setItem("name", name);
+                sessionStorage.setItem("email", email);
+            }
+            // Event-Listener für änderungen bei den Eingabefeldern
+            document.getElementById("name").addEventListener("input", saveInput);
+            document.getElementById("email").addEventListener("input", saveInput);
+
+            // Funktion zum Laden der Eingabewerte aus dem Sessionstorage
+            function loadInput() {
+                const name = sessionStorage.getItem("name");
+                const email = sessionStorage.getItem("email");
+                if (name) {
+                    document.getElementById("name").value = name;
+                }
+                if (email) {
+                    document.getElementById("email").value = email;
+                }
+            }
+
+            // Eingabewerte beim Klicken des Submit-Buttons löschen
+            document.getElementById("submit").addEventListener("click", function() {
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+            });
+
+            // Eingabewerte beim klicken von Button laden
+            document.getElementById("load").addEventListener("click", function() {
+                loadInput();
+            });
+
+            
+        </script>
+    </body>
+</html>

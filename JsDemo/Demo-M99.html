@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <!-- Texteingabe JSON String -->
+        <textarea id="textArea" rows="10" cols="30"></textarea>
+        <!-- Json String konvertieren -->
+        <button id="btn">Convert</button>
+        <!-- Paragraph für das Ergebnis -->
+        <p id="result"></p>
+        <script>
+            const btn = document.getElementById("btn");
+            const textArea = document.getElementById("textArea");
+            const result = document.getElementById("result");
+
+            btn.addEventListener("click", () => {
+                const text = textArea.value;
+                try {
+                    // JSON-String in Objekt umwandeln
+                    const object = JSON.parse(text);
+                    // Objekt wieder in JSON-String umwandeln
+                    result.innerHTML = JSON.stringify(object, null, 2);
+                } catch (error) {
+                    // Fehler in Result-Paragraph anzeigen
+                    result.innerHTML = "Error: " + error.message;
+                } 
+            });
+            
+           
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script>
+            // Test der Golocation API
+            // Funktion erfolgCallback
+            function erfolgCallback(position) {
+                // neuer Webworker wird erstellt, mit der Datei Demo-M12-Worker.js
+                // var meinWorker = new Worker("Demo-M12-Worker.js");
+
+                // // Worker wird gestartet und die Koordinaten werden übergeben
+                // meinWorker.postMessage(position.coords.latitude + "," + position.coords.longitude);
+                // meinWorker.onmessage = function(event) {
+                //     // Ergebnis des Workers wird in als Alert ausgegeben
+                //     alert("Deine Location ist auf der: " + event.data);
+                // }
+                console.log("Breitengrad: " + position.coords.latitude);
+                console.log("Längengrad: " + position.coords.longitude);
+                console.log("Genauigkeit: " + position.coords.accuracy);
+            }
+            // Funktion fehlerCallback
+            function fehlerCallback(error) {
+                console.log("Fehler: " + error.code);
+                console.log("Fehlermeldung: " + error.message);
+            }
+
+            // Optionen für die Geolocation API
+            var options = {
+                enableHighAccuracy: true, // Hohe Genauigkeit anfordern
+                timeout: 5000, // Timeout auf 5 Sekunden setzen
+                maximumAge: 0 // Keine zwischengespeicherten Daten verwenden
+            }
+            // Aufruf der Geolocation API
+            navigator.geolocation.getCurrentPosition(erfolgCallback, fehlerCallback, options);
+            
+            const fs = require('fs');
+            const path = require('path');
+            const filePath = path.join(__dirname, 'text.txt');
+            fs.readFile(filePath, 'utf8', (err, data) => {
+                if (err) {
+                    console.error('Fehler beim Lesen der Datei:', err);
+                    return;
+                }
+                console.log('Dateiinhalt:', data);
+            });
+        </script>
+    </body>
+</html>
